@@ -7,7 +7,9 @@ html
     header
       h1 Library Manager
       nav
-        a(href="/books") Home
-        a(href="/books/new") Add Book
+        //- Only show home button if not already on /books
+        if path !== '/books'
+          a.button(href="/books") Home
+        a.button(href="/books/new") Create New Book
     main
       block content

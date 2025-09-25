@@ -4,8 +4,45 @@ const { Book, Sequelize } = require('../models') // import your Book model
 const { Op } = Sequelize
 
 // GET /books - list all books - add optional search and pagination
-router.get('/', (req, res) => {
-  res.redirect('/books')
+router.get('/', async (req, res, next) => {
+  try {
+    const { search, page } = req.query
+    const limit = 5 // books per page
+    const currentPage = parseInt(page) || 1
+    const offset = (currentPage - 1) * limit
+
+    // Build search filter
+    const where = search
+      ? {
+          [Op.or]: [
+            { title: { [Op.like]: `%${search}%` } },
+            { author: { [Op.like]: `%${search}%` } },
+            { genre: { [Op.like]: `%${search}%` } },
+            { year: { [Op.like]: `%${search}%` } }
+          ]
+        }
+      : {}
+
+    // Find and count all books
+    const { count, rows: books } = await Book.findAndCountAll({
+      where,
+      limit,
+      offset,
+      order: [['title', 'ASC']]
+    })
+
+    const totalPages = Math.ceil(count / limit)
+
+    res.render('index', {
+      books,
+      currentPage,
+      totalPages,
+      search: search || '',
+      path: req.path
+    })
+  } catch (error) {
+    next(error)
+  }
 })
 
 // GET /books/new - show form to create a new book
@@ -20,7 +57,11 @@ router.post('/new', async (req, res, next) => {
     res.redirect('/books')
   } catch (error) {
     if (error.name === 'SequelizeValidationError') {
-      res.render('new-book', { book: req.body, errors: error.errors })
+      res.render('new-book', {
+        book: req.body,
+        path: req.path,
+        errors: error.errors
+      })
     } else {
       next(error)
     }
@@ -32,7 +73,7 @@ router.get('/:id', async (req, res, next) => {
   try {
     const book = await Book.findByPk(req.params.id)
     if (book) {
-      res.render('update-book', { book })
+      res.render('update-book', { book, path: req.path })
     } else {
       const err = new Error('Book not found')
       err.status = 404

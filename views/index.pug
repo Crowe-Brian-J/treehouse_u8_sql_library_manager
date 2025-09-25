@@ -1,10 +1,13 @@
 extends layout
 
 block content
-  //- Search form
-  form(method="GET", action="/books")
-    input(type="text", name="search", placeholder="Search books...", value=search)
-    input(type="submit", value="Search")
+  //- Search form and buttons row
+  block content
+  h2 Book List
+  div.search-bar(style="margin-top:20px; margin-bottom:10px;")
+    form(method="GET", action="/books")
+      input(type="text", name="search", placeholder="Search books...", value=search)
+      input(type="submit", value="Search")
 
   h2 Book List
   if books && books.length
@@ -24,17 +27,17 @@ block content
             td #{book.genre}
             td #{book.year}
             td
-              a(href=`/books/${book.id}`) Edit
+              a.button(href=`/books/${book.id}`) Edit
               form(method="POST", action=`/books/${book.id}/delete`, style="display:inline")
                 input(type="submit", value="Delete")
   else
-    p No books yet.
+    p No books found.
 
   //- Pagination
   if totalPages && totalPages > 1
     nav.pagination
       if currentPage > 1
-        a(href=`/books?search=${search}&page=${currentPage - 1}`) Previous
+        a.button(href=`/books?search=${search}&page=${currentPage - 1}`) Previous
       | Page #{currentPage} of #{totalPages} 
       if currentPage < totalPages
-        a(href=`/books?search=${search}&page=${currentPage + 1}`) Next
+        a.button(href=`/books?search=${search}&page=${currentPage + 1}`) Next
