@@ -94,6 +94,26 @@ td.actions-cell input.button {
   margin: 0; /* Remove extra margins from button */
 }
 
+/* Make table height static */
+div.table-wrapper{
+  overflow-x: auto;
+}
+
+table {
+  height: 350px;       /* total table height */
+  width: 90%;
+  table-layout: auto;  /* ensures columns respect width */
+}
+
+table thead tr {
+  height: 50px;         /* header row */
+}
+
+table tbody tr {
+  height: 60px;         /* each data row */
+}
+
+
 label {
   font-weight: bold;
   min-width: 130px;
