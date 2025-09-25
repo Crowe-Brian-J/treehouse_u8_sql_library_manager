@@ -37,7 +37,7 @@ block content
   if totalPages && totalPages > 1
     nav.pagination
       if currentPage > 1
-        a.button(href=`/books?search=${search}&page=${currentPage - 1}`) Previous
+        a.button(href=`/books?search=${search}&page=${currentPage - 1}`) Prev
       | Page #{currentPage} of #{totalPages} 
       if currentPage < totalPages
         a.button(href=`/books?search=${search}&page=${currentPage + 1}`) Next

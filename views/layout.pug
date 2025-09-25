@@ -8,7 +8,7 @@ html
       h1 Library Manager
       nav
         //- Only show home button if not already on /books
-        if path !== '/books'
+        if !hideHomeButton
           a.button(href="/books") Home
         a.button(href="/books/new") Create New Book
     main

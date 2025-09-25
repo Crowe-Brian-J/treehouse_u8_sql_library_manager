@@ -32,13 +32,17 @@ router.get('/', async (req, res, next) => {
     })
 
     const totalPages = Math.ceil(count / limit)
+    console.log('req.path:', req.path)
+
+    // Only hide home button if it's the first page and no search query
+    const hideHomeButton = !page && !search
 
     res.render('index', {
       books,
       currentPage,
       totalPages,
       search: search || '',
-      path: req.path
+      hideHomeButton
     })
   } catch (error) {
     next(error)
