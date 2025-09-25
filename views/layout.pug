@@ -1,7 +1,13 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Library Manager
+    link(rel="stylesheet", href="/stylesheets/style.css")
   body
-    block content
+    header
+      h1 Library Manager
+      nav
+        a(href="/books") Home
+        a(href="/books/new") Add Book
+    main
+      block content
