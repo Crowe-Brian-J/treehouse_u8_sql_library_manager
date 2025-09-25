@@ -2,15 +2,18 @@ body {
   padding: 10px 50px 50px;
   font: 18px 'Garamond', serif;
 }
+
 a {
   color: #019875;
   text-decoration: none;
   font-weight: bold;
   transition: 0.4s;
 }
+
 a:hover {
   color: black;
 }
+
 a.button,
 input[type='submit'] {
   color: white;
@@ -21,21 +24,32 @@ input[type='submit'] {
   border-radius: 2px;
   cursor: pointer;
 }
+
 form a.button,
 input[type='submit'] {
   margin-left: 140px;
   transition: 0.4s;
 }
+
 input[type='submit'] {
   border: 0;
 }
+
 a.button:hover,
 input[type='submit']:hover {
   background-color: #01b189;
 }
+
+a.button.disabled {
+  pointer-events: none; /* makes it unclickable */
+  opacity: 0.5; /* visually dimmed */
+  cursor: default; /* removes the pointer */
+}
+
 p {
   margin: 20px auto;
 }
+
 ul {
   padding: 0;
   list-style-type: none;
