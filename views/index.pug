@@ -10,27 +10,28 @@ block content
 
   //- Book table
   if books.length
-    table
-      thead
-        tr
-          th Title
-          th Author
-          th Genre
-          th Year
-          th(style="text-align: right;") Actions
-      tbody
-        each book in books
+    div(style="display: flex; justify-content: center;")
+      table
+        thead
           tr
-            td #{book.title}
-            td #{book.author}
-            td #{book.genre}
-            td #{book.year}
-            td.actions-cell
-              //- Wrap buttons in a flex container
-              div(style="display: flex; gap: 10px;")
-                a.button(href=`/books/${book.id}`) Edit
-                form(method="POST", action=`/books/${book.id}/delete`)
-                  input.button(type="submit", value="Delete")
+            th Title
+            th Author
+            th Genre
+            th Year
+            th(style="text-align: right;") Actions
+        tbody
+          each book in books
+            tr
+              td #{book.title}
+              td #{book.author}
+              td #{book.genre}
+              td #{book.year}
+              td.actions-cell
+                //- Wrap buttons in a flex container
+                div(style="display: flex; gap: 10px;")
+                  a.button(href=`/books/${book.id}`) Edit
+                  form(method="POST", action=`/books/${book.id}/delete`)
+                    input.button(type="submit", value="Delete")
   else
     p No books yet.
 
