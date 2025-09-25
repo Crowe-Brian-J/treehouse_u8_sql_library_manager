@@ -81,7 +81,7 @@ router.get('/:id', async (req, res, next) => {
     } else {
       const err = new Error('Book not found')
       err.status = 404
-      throw err
+      res.status(err.status).render('page-not-found', { error: err })
     }
   } catch (error) {
     next(error)

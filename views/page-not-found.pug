@@ -2,5 +2,5 @@ extends layout
 
 block content
   h2 Page Not Found
-  p Sorry, the page you requested could not be found.
+  p #{error.message}
   a(href="/books") Return to Book List
