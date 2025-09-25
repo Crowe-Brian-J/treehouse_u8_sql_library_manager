@@ -11,14 +11,14 @@ block content
   //- Book table
   if books.length
     div(style="display: flex; justify-content: center;")
-      table
+      table(style="width: 90%;")
         thead
           tr
-            th Title
-            th Author
-            th Genre
-            th Year
-            th(style="text-align: right;") Actions
+            th(style="width: 30%;") Title
+            th(style="width: 20%;") Author
+            th(style="width: 20%;") Genre
+            th(style="width: 10%;") Year
+            th(style="width: 20%; text-align: right;") Actions
         tbody
           each book in books
             tr
@@ -28,7 +28,7 @@ block content
               td #{book.year}
               td.actions-cell
                 //- Wrap buttons in a flex container
-                div(style="display: flex; gap: 10px;")
+                div(style="display: flex; justify-content: flex-end; gap: 10px;")
                   a.button(href=`/books/${book.id}`) Edit
                   form(method="POST", action=`/books/${book.id}/delete`)
                     input.button(type="submit", value="Delete")
