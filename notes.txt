@@ -1,2 +1,14 @@
 Things to fix:
-Books List Page 1 different heights from pages 2 and 3
+[ ] Form errors reported after Oooops at top of pages
+[ ] Cancel Button on New Book
+[ ] Separation of fields and buttons in New Book
+[ ] Swap Home and Create New Book buttons in layout.pug
+[ ] Remove edit button in index.pug, move to title, as link, in green
+[ ] Remove delete button in index.pug
+[ ] Remove Action Column on table
+[ ] Edit Book -> Update Book
+  [ ] - Add spacing on Form
+  [ ] - Add Cancel Button
+  [ ] - Add Delete Book Button
+[ ] If routing to a non-existent book id, project uses a global error handler to render a friendly "Page Not Found" or "error" page.
+[ ] If navigating to a non-existent route like /noroute, the project renders a user-friendly "Page Not Found" page.
