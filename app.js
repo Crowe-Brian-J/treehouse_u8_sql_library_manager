@@ -7,9 +7,6 @@ const logger = require('morgan')
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 
-// Sequelize DB Connection
-const { sequelize } = require('./models')
-
 const app = express()
 
 // view engine setup
@@ -43,13 +40,16 @@ app.use((err, req, res, next) => {
 
 module.exports = app
 
-// May have to move IIFE later but using void to avoid ghost semi-colon
+// Sequelize DB Connection
+const { sequelize } = require('./models')
+
+// May have to move IIFE later, but using void to avoid ghost semi-colon
 void (async () => {
   try {
     await sequelize.authenticate()
-    console.log('Database connection established successfully')
+    console.log('✅ Database connection established successfully')
     await sequelize.sync()
   } catch (error) {
-    console.error('Unable to connect to the database:', error)
+    console.error('❌ Unable to connect to the database:', error)
   }
-})
+})()
