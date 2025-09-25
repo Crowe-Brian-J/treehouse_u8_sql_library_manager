@@ -1,8 +1,13 @@
 extends layout
 
 block content
+  //- Search form
+  form(method="GET", action="/books")
+    input(type="text", name="search", placeholder="Search books...", value=search)
+    input(type="submit", value="Search")
+
   h2 Book List
-  if books.length
+  if books && books.length
     table
       thead
         tr
@@ -23,4 +28,13 @@ block content
               form(method="POST", action=`/books/${book.id}/delete`, style="display:inline")
                 input(type="submit", value="Delete")
   else
-    p No books yet. 
+    p No books yet.
+
+  //- Pagination
+  if totalPages && totalPages > 1
+    nav.pagination
+      if currentPage > 1
+        a(href=`/books?search=${search}&page=${currentPage - 1}`) Previous
+      | Page #{currentPage} of #{totalPages} 
+      if currentPage < totalPages
+        a(href=`/books?search=${search}&page=${currentPage + 1}`) Next

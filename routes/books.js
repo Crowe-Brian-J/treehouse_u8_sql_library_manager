@@ -1,15 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const { Book } = require('../models') // import your Book model
+const { Book, Sequelize } = require('../models') // import your Book model
+const { Op } = Sequelize
 
-// GET /books - list all books
-router.get('/', async (req, res, next) => {
-  try {
-    const books = await Book.findAll()
-    res.render('index', { books }) // pass books to the view
-  } catch (error) {
-    next(error)
-  }
+// GET /books - list all books - add optional search and pagination
+router.get('/', (req, res) => {
+  res.redirect('/books')
 })
 
 // GET /books/new - show form to create a new book
