@@ -17,7 +17,7 @@ block content
           th Author
           th Genre
           th Year
-          th Actions
+          th(style="text-align: right;") Actions
       tbody
         each book in books
           tr
@@ -25,10 +25,12 @@ block content
             td #{book.author}
             td #{book.genre}
             td #{book.year}
-            td
-              a.button(href=`/books/${book.id}`) Edit
-              form(method="POST", action=`/books/${book.id}/delete`, style="display:inline")
-                input(type="submit", value="Delete")
+            td.actions-cell
+              //- Wrap buttons in a flex container
+              div(style="display: flex; gap: 10px;")
+                a.button(href=`/books/${book.id}`) Edit
+                form(method="POST", action=`/books/${book.id}/delete`)
+                  input.button(type="submit", value="Delete")
   else
     p No books yet.
 

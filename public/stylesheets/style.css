@@ -80,6 +80,20 @@ td {
   padding: 5px 20px 5px 10px;
 }
 
+/* Work to better format Edit and Delete Buttons */
+td.actions-cell {
+  white-space: nowrap; /* Keeps buttons on the same line */
+}
+
+td.actions-cell form {
+  display: inline-block; /* Ensures form sits inline with edit button */
+  margin: 0; /* Remove default spacing */
+}
+
+td.actions-cell input.button {
+  margin: 0; /* Remove extra margins from button */
+}
+
 label {
   font-weight: bold;
   min-width: 130px;
