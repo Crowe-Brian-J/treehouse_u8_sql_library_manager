@@ -1,13 +1,12 @@
 extends layout
 
 block content
-  h2 Book List
-
   //- Search bar with spacing
   div.search-bar(style="margin: 20px 0;")
     form(method="GET", action="/books")
       input(type="text", name="search", placeholder="Search books...", value=search)
       input(type="submit", value="Search")
+    h2 Book List
 
   //- Book table
   if books.length

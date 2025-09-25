@@ -6,10 +6,10 @@ html
   body
     header
       h1 Library Manager
-      nav
+      nav(style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px")
         //- Only show home button if not already on /books
         if !hideHomeButton
           a.button(href="/books") Home
-        a.button(href="/books/new") Create New Book
+        a.button(href="/books/new", style='margin-left: auto;') Create New Book
     main
       block content
