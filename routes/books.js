@@ -35,7 +35,7 @@ router.get('/', async (req, res, next) => {
     console.log('req.path:', req.path)
 
     // Only hide home button if it's the first page and no search query
-    const hideHomeButton = !page && !search
+    const hideHomeButton = currentPage === 1 && !search
 
     res.render('index', {
       books,
