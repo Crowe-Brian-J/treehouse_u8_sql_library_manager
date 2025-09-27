@@ -32,17 +32,12 @@ router.get('/', async (req, res, next) => {
     })
 
     const totalPages = Math.ceil(count / limit)
-    console.log('req.path:', req.path)
-
-    // Only hide home button if it's the first page and no search query
-    const hideHomeButton = currentPage === 1 && !search
 
     res.render('index', {
       books,
       currentPage,
       totalPages,
-      search: search || '',
-      hideHomeButton
+      search: search || ''
     })
   } catch (error) {
     next(error)
@@ -51,7 +46,7 @@ router.get('/', async (req, res, next) => {
 
 // GET /books/new - show form to create a new book
 router.get('/new', (req, res) => {
-  res.render('new-book', { book: {} })
+  res.render('new-book', { book: {}, hideCreateButton: true })
 })
 
 // POST /books/new - create a new book in the database
@@ -74,17 +69,16 @@ router.post('/new', async (req, res, next) => {
 
 // GET /books/:id - show details/edit form for a book
 router.get('/:id', async (req, res, next) => {
-  const id = parseInt(req.params.id, 10)
-
-  if (isNaN(id)) {
-    const err = new Error(
-      `The book id parameter must be a number, "${req.params.id}" is invalid. Please try again.`
-    )
-    err.status = 418
-    next(err)
-  }
-
   try {
+    const id = await parseInt(req.params.id, 10)
+
+    if (isNaN(id)) {
+      const err = new Error(
+        `The book id parameter must be a number, "${req.params.id}" is invalid. Please try again.`
+      )
+      err.status = 418 //This is a teapot, not a coffee pot
+      next(err)
+    }
     const book = await Book.findByPk(req.params.id)
     if (book) {
       res.render('update-book', { book, path: req.path })
