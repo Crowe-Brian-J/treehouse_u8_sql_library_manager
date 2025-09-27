@@ -170,3 +170,17 @@ nav.pagination {
   align-items: center;
   gap: 10px;
 }
+
+/* Stack update buttons vertically with uniform spacing */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+/* Button group: control spacing via gap, not margins */
+.button-group input[type="submit"],
+.button-group a.button {
+  margin-bottom: 0; /* remove extra spacing from individual buttons */
+}

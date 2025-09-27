@@ -3,11 +3,11 @@ Things to fix:
 [X] Cancel Button on New Book
 [X] Separation of fields and buttons in New Book
 [ ] Swap Home and Create New Book buttons in layout.pug
-[ ] Remove edit button in index.pug, move to title, as link, in green
-[ ] Remove delete button in index.pug
-[ ] Remove Action Column on table
+[X] Remove edit button in index.pug, move to title, as link, in green
+[X] Remove delete button in index.pug
+[X] Remove Action Column on table
 [ ] Edit Book -> Update Book
-  [ ] - Add spacing on Form
+  [X] - Add spacing on Form
   [ ] - Add Cancel Button
   [ ] - Add Delete Book Button
 [ ] If routing to a non-existent book id, project uses a global error handler to render a friendly "Page Not Found" or "error" page.
