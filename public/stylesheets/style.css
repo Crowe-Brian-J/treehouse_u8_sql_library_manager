@@ -114,16 +114,15 @@ div.table-wrapper{
 
 table {
   height: 350px;       /* total table height */
-  width: 90%;
   table-layout: auto;  /* ensures columns respect width */
 }
 
-table thead tr {
-  height: 50px;         /* header row */
-}
+/* table thead tr {
+  height: 25px;         /* header row 
+} */
 
 table tbody tr {
-  height: 60px;         /* each data row */
+  height: 40px;         /* each data row */
 }
 
 

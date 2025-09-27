@@ -7,7 +7,7 @@ const { Op } = Sequelize
 router.get('/', async (req, res, next) => {
   try {
     const { search, page } = req.query
-    const limit = 5 // books per page
+    const limit = 10 // books per page
     const currentPage = parseInt(page) || 1
     const offset = (currentPage - 1) * limit
 
