@@ -2,22 +2,21 @@ extends layout
 
 block content
   h2 Add a New Book
+
+  if errors
+    h2.error Oooops!
+    ul
+      each error in errors
+        li.error #{error.message}
+
   form(method="POST", action="/books/new")
     label(for="title") Title:
     input(type="text", name="title", id="title", value=book.title || '')
-    if errors
-      each error in errors
-        if error.path === 'title'
-          p.error #{error.message}
 
     br
 
     label(for="author") Author:
     input(type="text", name="author", id="author", value=book.author || '')
-    if errors
-      each error in errors
-        if error.path === 'author'
-          p.error #{error.message}
 
     br
 
@@ -32,3 +31,7 @@ block content
     br
 
     input(type="submit", value="Create Book")
+
+    br
+
+    a.button(href="/books") Cancel

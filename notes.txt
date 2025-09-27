@@ -1,7 +1,7 @@
 Things to fix:
-[ ] Form errors reported after Oooops at top of pages
-[ ] Cancel Button on New Book
-[ ] Separation of fields and buttons in New Book
+[X] Form errors reported after Oooops at top of pages
+[X] Cancel Button on New Book
+[X] Separation of fields and buttons in New Book
 [ ] Swap Home and Create New Book buttons in layout.pug
 [ ] Remove edit button in index.pug, move to title, as link, in green
 [ ] Remove delete button in index.pug
