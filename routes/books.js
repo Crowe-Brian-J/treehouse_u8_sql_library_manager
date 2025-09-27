@@ -74,14 +74,24 @@ router.post('/new', async (req, res, next) => {
 
 // GET /books/:id - show details/edit form for a book
 router.get('/:id', async (req, res, next) => {
+  const id = parseInt(req.params.id, 10)
+
+  if (isNaN(id)) {
+    const err = new Error(
+      `The book id parameter must be a number, "${req.params.id}" is invalid. Please try again.`
+    )
+    err.status = 418
+    next(err)
+  }
+
   try {
     const book = await Book.findByPk(req.params.id)
     if (book) {
       res.render('update-book', { book, path: req.path })
     } else {
-      const err = new Error('Book not found')
+      const err = new Error(`Book #${req.params.id} not found`)
       err.status = 404
-      res.status(err.status).render('page-not-found', { error: err })
+      next(err)
     }
   } catch (error) {
     next(error)

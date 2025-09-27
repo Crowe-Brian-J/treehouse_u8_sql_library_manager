@@ -8,7 +8,7 @@ Things to fix:
 [X] Remove Action Column on table
 [ ] Edit Book -> Update Book
   [X] - Add spacing on Form
-  [ ] - Add Cancel Button
-  [ ] - Add Delete Book Button
-[ ] If routing to a non-existent book id, project uses a global error handler to render a friendly "Page Not Found" or "error" page.
-[ ] If navigating to a non-existent route like /noroute, the project renders a user-friendly "Page Not Found" page.
+  [X] - Add Cancel Button
+  [X] - Add Delete Book Button
+[X] If routing to a non-existent book id, project uses a global error handler to render a friendly "Page Not Found" or "error" page.
+[X] If navigating to a non-existent route like /noroute, the project renders a user-friendly "Page Not Found" page.
