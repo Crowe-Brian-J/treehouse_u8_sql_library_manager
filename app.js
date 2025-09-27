@@ -42,7 +42,7 @@ module.exports = app
 // Sequelize DB Connection
 const { sequelize } = require('./models')
 
-// May have to move IIFE later, but using void to avoid ghost semi-colon
+// Using void to avoid ghost semi-colon
 void (async () => {
   try {
     await sequelize.authenticate()

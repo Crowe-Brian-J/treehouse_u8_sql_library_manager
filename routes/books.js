@@ -67,16 +67,16 @@ router.post('/new', async (req, res, next) => {
   }
 })
 
-// GET /books/:id - show details/edit form for a book
+// GET /books/:id - show details/edit form/option to delete for a book
 router.get('/:id', async (req, res, next) => {
   try {
-    const id = await parseInt(req.params.id, 10)
+    const id = await parseInt(req.params.id, 10) // Handle non-number inputs
 
     if (isNaN(id)) {
       const err = new Error(
         `The book id parameter must be a number, "${req.params.id}" is invalid. Please try again.`
       )
-      err.status = 418 //This is a teapot, not a coffee pot
+      err.status = 418 // This is a teapot, not a coffee pot
       next(err)
     }
     const book = await Book.findByPk(req.params.id)

@@ -36,11 +36,11 @@ Library Manager is a web application for managing a collection of books. Users c
 
 ## Project Structure
 
-/models     - Sequelize models
-/routes     - Express routes
-/views      - Pug templates for pages
-/public     - CSS
-app.js      - Main Express application
+'/models     - Sequelize models'
+'/routes     - Express routes'
+'/views      - Pug templates for pages'
+'/public     - CSS'
+'app.js      - Main Express application'
 
 ## Validation and Error Handling
 
